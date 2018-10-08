@@ -45,7 +45,7 @@ def down_moive(down_url,title):
     if response.status_code==200:
         content_size = int(response.headers['content-length'])
         chunk_size = 1024
-        if (content_size/chunk_size/1024)<100:
+        if (content_size/chunk_size/1024)<10:
             print('[File Size]: %0.2f MB' % (content_size/chunk_size/1024))
             print('Too small,do not download!')
             return 0
