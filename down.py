@@ -15,7 +15,9 @@ import base64
 import os
 import requests
 import json
-os.chdir("C:\\Users\\Jerry\\PycharmProjects\\Dowloader")
+import sys
+import time
+os.chdir("D:\\OLDCOMP")
 
 def get_list(url):
     response=requests.get(url)
@@ -51,21 +53,19 @@ def down_moive(down_url,title):
             return 0
         print('[File Size]: %0.2f MB' % (content_size/chunk_size/1024))
         size = 0
-        import sys
         with open(title+'.mp4', 'wb') as f:
             for data in response.iter_content(chunk_size=chunk_size):
                 f.write(data)
                 size += len(data)
                 f.flush()
-                
-                print("\r {}".format('[Progress]: %0.2f%%' % float(size/content_size*100) + '\r'),end="")
-    
-    #            sys.stdout.write('[Progress]: %0.2f%%' % float(size/content_size*100) + '\r')
+                sys.stdout.write("\r{0}".format(size)+ '\r')
+                #print("\r{0}".format('[Progress]: %0.2f%%' % float(size/content_size*100) + '\r'))
+                sys.stdout.write("\r{0}".format('[Progress]: %0.2f%%' % float(size/content_size*100)))
                 sys.stdout.flush()
     print('\n')
     return 1
 
-url="http://www.69tang11.com/"
+url="http://www.69tang11.com/most-popular/"
 li,ti=get_list(url)
 #data={
 #'mode'	:'async',
