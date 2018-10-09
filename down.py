@@ -16,7 +16,6 @@ import os
 import requests
 import json
 import sys
-import time
 os.chdir("D:\\OLDCOMP")
 
 def get_list(url):
@@ -65,7 +64,8 @@ def down_moive(down_url,title):
     print('\n')
     return 1
 
-url="http://www.69tang11.com/most-popular/"
+url = "http://www.69tang11.com/"
+#url="https://www.xvideos.com"
 li,ti=get_list(url)
 #data={
 #'mode'	:'async',
